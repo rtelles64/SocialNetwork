@@ -1,0 +1,14 @@
+<!-- Here we use a macro to create divs, macros are provided by Jinja -->
+<!-- render_field is the name of our macro, then we pass it a field -->
+{% macro render_field(field) %}
+<div class="field">
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <div class="notification error">
+                {{ error }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {{ field(placeholder=field.label.text) }}
+</div>
+{% endmacro %}
